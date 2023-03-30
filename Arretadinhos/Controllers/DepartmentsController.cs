@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Arretadinhos.Data;
 using Arretadinhos.Models;
 
 namespace Arretadinhos.Controllers

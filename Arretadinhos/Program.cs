@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Arretadinhos.Data;
+using Arretadinhos.Models;
+using Arretadinhos.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ArretadinhosContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ArretadinhosContext"), builder => builder.MigrationsAssembly("Arretadinhos")));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 

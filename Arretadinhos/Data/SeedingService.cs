@@ -1,7 +1,6 @@
-using Arretadinhos.Models;
 using Arretadinhos.Models.Enums;
 
-namespace Arretadinhos.Data
+namespace Arretadinhos.Models
 {
     public class SeedingService
     {

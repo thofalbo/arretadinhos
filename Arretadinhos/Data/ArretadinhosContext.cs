@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Arretadinhos.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Arretadinhos.Data
+namespace Arretadinhos.Models
 {
     public class ArretadinhosContext : DbContext
     {
