@@ -1,4 +1,4 @@
-@model Arretadinhos.Models.Seller
+@model Arretadinhos.Models.ViewModels.SellerFormViewModel
 @{
     ViewData["Title"] = "Create";
 }
@@ -11,21 +11,26 @@
         <form asp-action="Create">
             <fieldset>
                 <div class="form-group">
-                    <label asp-for="Name" class="form-label mt-4"></label>
-                    <input asp-for="Name" type="text" class="form-control" placeholder="Enter name">
+                    <label asp-for="Seller.Name" class="form-label mt-4"></label>
+                    <input asp-for="Seller.Name" type="text" class="form-control" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                    <label asp-for="Email" class="form-label mt-4"></label>
-                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter email">
+                    <label asp-for="Seller.Email" class="form-label mt-4"></label>
+                    <input asp-for="Seller.Email" type="email" class="form-control" placeholder="Enter email">
                     <small class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
-                    <label asp-for="BirthDate" class="form-label mt-4"></label>
-                    <input asp-for="BirthDate" type="datetime-local" class="form-control">
+                    <label asp-for="Seller.BirthDate" class="form-label mt-4"></label>
+                    <input asp-for="Seller.BirthDate" type="datetime-local" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label asp-for="BaseSalary" class="form-label mt-4"></label>
-                    <input asp-for="BaseSalary" type="number" class="form-control" placeholder="Enter base salary">
+                    <label asp-for="Seller.BaseSalary" class="form-label mt-4"></label>
+                    <input asp-for="Seller.BaseSalary" type="number" class="form-control" placeholder="Enter base salary">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Seller.DepartmentId" class="form-label mt-4"></label>
+                    <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id","Name"))" class="form-select">
+                    </select>
                 </div>
                 <div class="form-group">
                     <input style="margin-top: 5%;" type="submit" value="Create" class="btn btn-primary" />
