@@ -25,6 +25,10 @@ namespace Arretadinhos.Controllers
             var list = _sellerService.FindAll();
             return View(list);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         // public IActionResult Error()

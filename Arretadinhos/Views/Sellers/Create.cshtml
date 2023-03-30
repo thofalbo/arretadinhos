@@ -1,0 +1,38 @@
+@model Arretadinhos.Models.Seller
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h4>Seller</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="Name" class="form-label mt-4"></label>
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label mt-4"></label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter email">
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BirthDate" class="form-label mt-4"></label>
+                    <input asp-for="BirthDate" type="datetime-local" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label asp-for="BaseSalary" class="form-label mt-4"></label>
+                    <input asp-for="BaseSalary" type="number" class="form-control" placeholder="Enter base salary">
+                </div>
+                <div class="form-group">
+                    <input style="margin-top: 5%;" type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
