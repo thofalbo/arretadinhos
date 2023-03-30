@@ -1,26 +1,35 @@
+using Arretadinhos.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Arretadinhos.Controllers
 {
     // [Route("[Sellers]")]
-    public class Sellers : Controller
+    public class SellersController : Controller
     {
-        private readonly ILogger<Sellers> _logger;
+        // private readonly ILogger<Sellers> _logger;
 
-        public Sellers(ILogger<Sellers> logger)
+        // public Sellers(ILogger<Sellers> logger)
+        // {
+        //     _logger = logger;
+        // }
+
+        private readonly SellerService _sellerService;
+
+        public SellersController(SellerService sellerService)
         {
-            _logger = logger;
+            _sellerService = sellerService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var list = _sellerService.FindAll();
+            return View(list);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        // public IActionResult Error()
+        // {
+        //     return View("Error!");
+        // }
     }
 }
