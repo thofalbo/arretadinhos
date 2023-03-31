@@ -57,6 +57,7 @@ namespace Arretadinhos.Controllers
             }
             return View(obj);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
@@ -64,7 +65,26 @@ namespace Arretadinhos.Controllers
             _sellerService.Remove(id);
             return RedirectToAction(nameof(Index));
         }
+        
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
 
+        // public IActionResult Details(int? id)
+        // {
+            // _sellerService.Edit(id);
+            // return RedirectToAction(nameof(Index));
+        // }
         // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         // public IActionResult Error()
         // {
