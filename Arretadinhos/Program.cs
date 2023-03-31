@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Arretadinhos.Models;
 using Arretadinhos.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ArretadinhosContext>(options =>
@@ -13,6 +15,14 @@ builder.Services.AddScoped<DepartmentService>();
 
 var app = builder.Build();
 
+var ptBR = new CultureInfo("pt-BR");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(ptBR),
+    SupportedCultures = new List<CultureInfo> { ptBR },
+    SupportedUICultures = new List<CultureInfo> { ptBR }
+};
+app.UseRequestLocalization(localizationOptions);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

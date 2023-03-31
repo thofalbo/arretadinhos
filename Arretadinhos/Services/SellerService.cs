@@ -32,9 +32,7 @@ namespace Arretadinhos.Services
         }
         public void Update(Seller obj) {
             if (!_context.Seller.Any(x => x.Id == obj.Id))
-            {
                 throw new NotFoundException("Id not found");
-            }
             try
             {
                 _context.Update(obj);
