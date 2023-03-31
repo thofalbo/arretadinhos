@@ -1,20 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Arretadinhos.Models;
 using Arretadinhos.Models.ViewModels;
 using Arretadinhos.Services;
-using Microsoft.AspNetCore.Mvc;
+using Arretadinhos.Services.Exceptions;
 
 namespace Arretadinhos.Controllers
 {
-    // [Route("[Sellers]")]
     public class SellersController : Controller
     {
-        // private readonly ILogger<Sellers> _logger;
-
-        // public Sellers(ILogger<Sellers> logger)
-        // {
-        //     _logger = logger;
-        // }
-
         private readonly SellerService _sellerService;
         private readonly DepartmentService _departmentService;
 
@@ -79,16 +76,44 @@ namespace Arretadinhos.Controllers
             }
             return View(obj);
         }
+        public IActionResult Edit(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            List<Department> departments = _departmentService.FindAll();
+            SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments };
+            return View(viewModel);
+        }
 
-        // public IActionResult Details(int? id)
-        // {
-            // _sellerService.Edit(id);
-            // return RedirectToAction(nameof(Index));
-        // }
-        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        // public IActionResult Error()
-        // {
-        //     return View("Error!");
-        // }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Seller seller)
+        {
+            if(id != seller.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                seller.BirthDate = seller.BirthDate.ToUniversalTime();
+                _sellerService.Update(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrenctyException)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

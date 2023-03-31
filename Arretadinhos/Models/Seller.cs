@@ -16,7 +16,7 @@ namespace Arretadinhos.Models
         {
             Name = name;
             Email = email;
-            BirthDate = birthDate.ToLocalTime();
+            BirthDate = birthDate;
             BaseSalary = baseSalary;
             Department = department;
         }
