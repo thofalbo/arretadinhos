@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Arretadinhos.Models;
-using Arretadinhos.Services;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ArretadinhosContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ArretadinhosContext"), builder => builder.MigrationsAssembly("Arretadinhos")));
-// Add services to the container.
+    
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
@@ -23,7 +21,7 @@ var localizationOptions = new RequestLocalizationOptions
     SupportedUICultures = new List<CultureInfo> { ptBR }
 };
 app.UseRequestLocalization(localizationOptions);
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -47,6 +45,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
 
 app.Run();

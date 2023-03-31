@@ -25,8 +25,11 @@ namespace Arretadinhos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            if (!ModelState.IsValid) return View(seller);
+
             seller.BirthDate = seller.BirthDate.ToUniversalTime();
             _sellerService.Insert(seller);
+
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Delete(int? id)
@@ -79,7 +82,10 @@ namespace Arretadinhos.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
-        {
+        {            
+            if (!ModelState.IsValid)
+                return View(new SellerFormViewModel { Seller = seller, Departments = _departmentService.FindAll() });
+
             if(id != seller.Id)
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
             try
