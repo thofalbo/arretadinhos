@@ -32,8 +32,9 @@
                     <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id","Name"))" class="form-select">
                     </select>
                 </div>
+                <hr />
                 <div class="form-group">
-                    <input style="margin-top: 5%;" type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </fieldset>
         </form>
