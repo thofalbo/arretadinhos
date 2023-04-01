@@ -47,9 +47,8 @@ namespace Arretadinhos.Models
         {
             Sales.Remove(sr);
         }
-        public double TotalSales(DateTime initial, DateTime final)
-        {
-            return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
-        }
+        public double TotalSales(DateTime initial, DateTime final) => Sales
+            .Where(sr => sr.Date >= initial && sr.Date <= final)
+            .Sum(sr => sr.Amount);
     }
 }

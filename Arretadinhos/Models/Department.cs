@@ -20,9 +20,6 @@
         {
             Sellers.Remove(s);
         }
-        public double TotalSales(DateTime initial, DateTime final)
-        {
-            return Sellers.Sum(s => s.TotalSales(initial, final));
-        }
+        public double TotalSales(DateTime initial, DateTime final) => Sellers.Sum(s => s.TotalSales(initial, final));
     }
 }
