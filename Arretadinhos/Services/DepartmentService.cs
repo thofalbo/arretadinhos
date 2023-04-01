@@ -1,5 +1,3 @@
-using Arretadinhos.Models;
-
 namespace Arretadinhos.Services
 {
     public class DepartmentService
@@ -9,9 +7,9 @@ namespace Arretadinhos.Services
         {
             _context = context;
         }
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }

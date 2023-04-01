@@ -1,8 +1,4 @@
-﻿using Arretadinhos.Models.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-namespace Arretadinhos.Controllers
+﻿namespace Arretadinhos.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,5 +1,3 @@
-using Arretadinhos.Models.Enums;
-
 namespace Arretadinhos.Models
 {
     public class SalesRecord
@@ -7,6 +5,8 @@ namespace Arretadinhos.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public double Amount { get; set; }
+        
+        [DisplayFormat(DataFormatString = "R$ {0:F2}")]
         public SalesStatus Status { get; set; }
         public Seller Seller { get; set; }
 

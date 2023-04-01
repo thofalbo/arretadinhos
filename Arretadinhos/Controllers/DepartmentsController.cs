@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Arretadinhos.Models;
-
-namespace Arretadinhos.Controllers
+﻿namespace Arretadinhos.Controllers
 {
     public class DepartmentsController : Controller
     {

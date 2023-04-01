@@ -1,4 +1,3 @@
-
 namespace Arretadinhos.Services.Exceptions
 {
     public class NotFoundException : ApplicationException

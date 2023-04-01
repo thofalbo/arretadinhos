@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace Arretadinhos.Controllers
 {
     public class SalesRecordsController : Controller

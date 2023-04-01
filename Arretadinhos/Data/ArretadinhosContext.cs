@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Arretadinhos.Models
+﻿namespace Arretadinhos.Models
 {
     public class ArretadinhosContext : DbContext
     {
